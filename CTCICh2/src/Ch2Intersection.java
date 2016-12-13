@@ -5,14 +5,14 @@ public class Ch2Intersection {
 
     public Node findIntersect(SinglyLinkedList linkedListOne, SinglyLinkedList linkedListTwo){
         Node runnerOne = linkedListOne.getHead();
-        Node runnerTwo = linkedListTwo.getHead();
+        Node runnerTwo;
 
         while(runnerOne != null){
             runnerTwo = linkedListTwo.getHead();
 
             while(runnerTwo != null){
                 if(runnerOne == runnerTwo){
-                    return runnerOne;
+                    break;
                 }
                 else{runnerTwo = runnerTwo.getNext();
 
@@ -22,6 +22,6 @@ public class Ch2Intersection {
         }
 
 
-        return null;
+        return runnerOne;
     }
 }

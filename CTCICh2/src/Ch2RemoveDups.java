@@ -13,12 +13,14 @@ public class Ch2RemoveDups {
         HashMap values = new HashMap();
         Node node = linkedList.getHead();
         values.put(true, linkedList.head.getKey());
-
+        Node runner;
         while(node != null){
-            Node runner = node.getNext();
+            runner = node.getNext();
+            System.out.println();
             int value = runner.getKey();
             if(!values.containsKey(value)){
                 values.put(true, value);
+
             }
             else {
                 node.setNext(runner.getNext());

@@ -7,7 +7,7 @@ public class LoopDetection {
 
     public Node detectLoop(SinglyLinkedList ll){
 
-        HashMap nodes = new HashMap();
+        HashMap<Integer, Node> nodes = new HashMap<Integer, Node>();
         boolean loop = false;
         Node runner = ll.getHead();
 
@@ -15,6 +15,7 @@ public class LoopDetection {
             if(nodes.containsKey(runner.getKey())){
                 loop = true;
                 return runner;
+
             }
             else {
                 nodes.put(runner.getKey(), runner);
