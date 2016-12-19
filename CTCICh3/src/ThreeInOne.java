@@ -3,5 +3,10 @@
  */
 public class ThreeInOne {
 
-    private int[] stacks;
+    int[] arrayStacks;
+    MyStack firstStack = new MyStack();
+    MyStack secondStack = new MyStack();
+    MyStack thirdStack = new MyStack();
+
+
 }

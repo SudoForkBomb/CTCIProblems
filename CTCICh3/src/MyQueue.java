@@ -12,7 +12,8 @@ public class MyQueue<T> {
             this.data = data;
         }
     }
-     private QueueNode<T> first;
+
+    private QueueNode<T> first;
     private QueueNode<T> last;
 
     public void add(T item) {
