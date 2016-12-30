@@ -4,8 +4,8 @@ import java.util.HashMap;
  * Created by crtaylor123 on 12/19/16.
  */
 public class StackOfPlates<T> {
-    HashMap<Integer, MyQueue> stacks = new HashMap<Integer, MyQueue>();
-    MyQueue currentQueue = new MyQueue();
+    HashMap<Integer, MyStack> stacks = new HashMap<Integer, MyStack>();
+    MyStack currentStack = new MyStack();
 
 
     int currentStackPointer = 0;
@@ -13,21 +13,21 @@ public class StackOfPlates<T> {
     int maxPlates = 5;
 
     /*
-        First checks to see the plate counter for the stack/queue is at the max.
+        First checks to see the plate counter for the stack is at the max.
         If it is, it adds the stack/queue to the hashmap, creates a new currentQueue, then adds the item to the new queue, and sets the plateCounter to 1.
         Otherwise, it just adds the item to the currentQueue
      */
 
     public void push(T item){
         if(plateCounter == maxPlates){
-            stacks.put(currentStackPointer, currentQueue);
+            stacks.put(currentStackPointer, currentStack);
             currentStackPointer++;
-            currentQueue = new MyQueue();
-            currentQueue.add(item);
+            currentStack = new MyStack();
+            currentStack.push(item);
             plateCounter = 1;
         }
         else{
-            currentQueue.add(item);
+            currentStack.push(item);
             plateCounter++;
         }
     }
@@ -39,20 +39,29 @@ public class StackOfPlates<T> {
         Otherwise, it just pops off the top plate and decreases the counter.
      */
     public T pop(){
-        if(currentQueue.isEmpty()){
+        if(currentStack.isEmpty()){
             if(currentStackPointer == 0){
                 System.out.printf("There are no plates left to pop.");
             }
             currentStackPointer--;
-            currentQueue = stacks.get(currentStackPointer);
+            currentStack = stacks.get(currentStackPointer);
             plateCounter--;
-            return (T) currentQueue.remove();
+            return (T) currentStack.pop();
         }
         else{
             plateCounter--;
-            return (T) currentQueue.remove();
+            return (T) currentStack.pop();
         }
+
     }
+
+    public T popAt(int index){
+        MyStack specificStack = stacks.get(index);
+        return (T) specificStack;
+    }
+
+
+
 
     public int getCurrentStackPointer() {
         return currentStackPointer;
