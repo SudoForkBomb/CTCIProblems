@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+import static java.lang.System.in;
+
 /**
  * Created by crtaylor123 on 12/29/16.
  */
@@ -11,34 +16,61 @@ public class RouteBetweenNodes {
         Are the nodes random?
         Is it binary, or do nodes have more than one neighbor?
         Can it be bi-directional?
+        Is it cyclic? pg.106
+        Do I need to also check that there is a route from node b to node a?
 
       */
 
     /* Solution
-        1.) Check to see if the node is in the other's neighbor arrays.
-        2.) Recursively pass in the next node
+        Use Breadth First Search
+        Take the first node and add it to a queue.
+        Then pop off the top node from queue.
+        Check that it's not null, then see if any of it's adjacent nodes are visited. If not, check to see if they are node b.
+        If they are node b, then return true
+        Else, see if it's been visited, if not mark it visiting, then add it to the queue.
+        Finally mark the top node as visited and repeat.
      */
 
-    public boolean checkRoute(Node a, Node b){
+    enum State { Unvisited, Visitied, Visiting;}
 
-        for(int i = 0; i < a.children.length; i++ ){
-            if(a.children[i] == b) {
-                return true;
+    public static boolean checkRoute(Node a, Node b) {
+
+        if(a == b) return true;
+
+        //MyQueue queue = new MyQueue();
+        LinkedList<Node> queue = new LinkedList<Node>();
+        a.state = State.Visiting;
+        queue.add(a); // Add to the end of queue
+
+        //The Solution has a Graph that you pass in and first check that all the nodes' state in the graph are set to unvisited.
+        // for (Node u : graph.getNodes()){
+        //    u.state = State.Unvisited; }
+        ArrayList<Node> trueNodes = new ArrayList<Node>();
+        trueNodes.add(a);
+
+
+        while (!queue.isEmpty()) {
+            Node topOfQueue = queue.remove();
+            if (topOfQueue != null) {
+                for (Node child : topOfQueue.children) {
+                    if (child.state == State.Unvisited) {
+                        if (child == b) {
+                            return true;
+                        }else {
+                            child.state = State.Visiting;
+                            trueNodes.add(child);
+                            queue.add(child);
+                        }
+                    }
+                }
+                topOfQueue.state = State.Visitied;
             }
         }
-        for(int i = 0; i < b.children.length; i++ ){
-            if(b.children[i] == a) {
-                return true;
-            }
+
+        for (Node x : trueNodes){
+            x.state = State.Unvisited;
         }
-        for(int i = 0; i < a.children.length; i++ ){
-
-        }
-
-
 
         return false;
     }
-
-
 }
