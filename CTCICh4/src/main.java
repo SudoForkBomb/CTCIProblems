@@ -44,7 +44,7 @@ public class main {
         BiNode two = new BiNode(2, one, three);
 
         //System.out.println(ValidateBST.validate(f));
-        System.out.println(BSTSequences.printAnotherTree(two));
+        System.out.println(BSTSequences.printTree(two));
 
     }
 }
