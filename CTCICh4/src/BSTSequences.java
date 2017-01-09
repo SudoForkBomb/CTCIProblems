@@ -28,8 +28,38 @@ public class BSTSequences {
 
     static public ArrayList leftOutput = new ArrayList();
     static public ArrayList rightOutput = new ArrayList();
+    public static String printTree(BiNode root){
+        leftOutput.add(root.value);
+        rightOutput.add(root.value);
 
-    public static String printTree(BiNode root) {
+        if(root.leftNode != null && root.rightNode != null){
+            leftOutput.add(root.leftNode.value);
+            leftOutput.add(root.rightNode.value);
+            rightOutput.add(root.rightNode.value);
+            rightOutput.add(root.rightNode.value);
+            printTree(root.leftNode);
+            printTree(root.rightNode);
+        }
+        else if(root.leftNode != null){
+            leftOutput.add(root.leftNode.value);
+            rightOutput.add(root.leftNode.value);
+            printTree(root.leftNode);
+
+        }
+        else if(root.rightNode != null){
+            leftOutput.add(root.rightNode.value);
+            rightOutput.add(root.rightNode.value);
+            printTree(root.rightNode);
+        }
+
+        return leftOutput.toString() + ", " + rightOutput.toString();
+
+
+
+
+    }
+
+    public static String printAnotherTree(BiNode root) {
         if (root != null) {
             leftTraversal(root);
             rightTraversal(root);
