@@ -39,7 +39,12 @@ public class main {
         BiNode e = new BiNode(7, d, null);
         BiNode f = new BiNode(5, c, e);
 
-        System.out.println(ValidateBST.validate(f));
+        BiNode one = new BiNode(1, null, null);
+        BiNode three = new BiNode(3, null, null);
+        BiNode two = new BiNode(2, one, three);
+
+        //System.out.println(ValidateBST.validate(f));
+        System.out.println(BSTSequences.printTree(two));
 
     }
 }
