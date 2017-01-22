@@ -10,7 +10,6 @@ public class ValidateBST {
         Are all nodes just integers? If not, how do I determine if values are < or >?
         Can it have duplicate values? If so, are the equal values on the right or left?
         Will the Binary tree be Complete and/or Full?
-
       */
 
     /* Solution

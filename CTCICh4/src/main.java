@@ -33,18 +33,21 @@ public class main {
 
 
         BiNode a = new BiNode(2, null, null);
-        BiNode b = new BiNode(4, null, null);
+        BiNode b = new BiNode(9, null, null);
         BiNode c = new BiNode(3, a, b);
         BiNode d = new BiNode(6, null, null);
         BiNode e = new BiNode(7, d, null);
         BiNode f = new BiNode(5, c, e);
 
-        BiNode one = new BiNode(1, null, null);
         BiNode three = new BiNode(3, null, null);
+        BiNode five = new BiNode(5, null,null);
+        BiNode one = new BiNode(1, null, null);
         BiNode two = new BiNode(2, one, three);
+        BiNode four = new BiNode(4, two,five);
+
 
         //System.out.println(ValidateBST.validate(f));
-        System.out.println(BSTSequences.printTree(two));
+        System.out.println(BSTSequences.printTree(four));
 
     }
 }
