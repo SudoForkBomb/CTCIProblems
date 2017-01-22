@@ -9,6 +9,9 @@ public class DrawLine {
     screen, of course, can be derived from the length of the array and the width. Implement a function that draws a
     horizontal line from (x1, y) to (x2, y).
 
+    The method signature should look something like:
+    drawLine(byte[] screen, int width, int xl, int x2, int y)
+
      */
 
     /* Questions
