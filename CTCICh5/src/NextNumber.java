@@ -16,4 +16,11 @@ public class NextNumber {
     /* Solution
 
      */
+
+    public void getNextNumbers(int num){
+        String smallNext = "";
+        String largeNext = "";
+
+
+    }
 }

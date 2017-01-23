@@ -10,16 +10,22 @@ public class BinaryToString {
 
     /* Questions
         Since we are only doing numbers between 0 to 1, are we not doing a sign bit?
+        Do I need to stop before 32 characters, or if it detects a repeating pattern?
      */
 
     /* Solution
         This helped. https://en.wikipedia.org/wiki/Binary_number#Decimal
      */
 
+
+
     static public String binaryConvert(double realNum){
+        if(realNum >=1 || realNum <= 0){
+            return "Error";
+        }
         double result = realNum;
         String binaryResult = "0.";
-        while(binaryResult.length() < 32){
+        while(binaryResult.length() <= 32){
             result = result * 2;
             System.out.println(result);
 
